@@ -75,3 +75,7 @@ end
 group :production do 
   gem 'pg'
 end
+
+# adding gems for falshes messgaes 
+gem 'jquery-rails'
+gem 'turbolinks'
