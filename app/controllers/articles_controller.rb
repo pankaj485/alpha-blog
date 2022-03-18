@@ -1,4 +1,6 @@
 class ArticlesController < ActionController::Base
+  layout "application"
+
   def show
     @articles = Article.find(params[:id])
     @entry_num = params[:id]
