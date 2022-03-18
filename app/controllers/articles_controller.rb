@@ -1,5 +1,5 @@
-class ArticlesController < ActionController::Base
-  layout "application"
+class ArticlesController < ApplicationController
+  # layout "application"
 
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
