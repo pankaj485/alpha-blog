@@ -1,4 +1,7 @@
 <h1>showing articles details </h1>
 <p><strong>id: </strong> <%= @entry_num  %> </p>
-<p><strong>title: </strong>  <%= @articles.title  %> </p>
-<p><strong>desription: </strong>  <%= @articles.description  %> </p>
+<p><strong>title: </strong>  <%= @article.title  %> </p>
+<p><strong>desription: </strong>  <%= @article.description  %> </p>
+<%= link_to "Edit", edit_article_path(@article)  %> |
+<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure, you want to delete this article?"}  %> |
+<%= link_to "Return to articles list", articles_path  %>
