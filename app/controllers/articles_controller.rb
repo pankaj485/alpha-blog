@@ -48,4 +48,12 @@ class ArticlesController < ActionController::Base
     end
     @data_received = params[:article]
   end
+
+  def destroy
+    @article = Article.find(params[:id])
+    if @article.destroy
+      flash[:notice] = "deleted id #{params[:id]} entry "
+      redirect_to articles_path
+    end
+  end
 end
