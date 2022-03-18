@@ -1,8 +1,9 @@
 class ArticlesController < ActionController::Base
   layout "application"
 
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def show
-    @article = Article.find(params[:id])
     @entry_num = params[:id]
   end
 
@@ -16,7 +17,7 @@ class ArticlesController < ActionController::Base
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(article_params)
 
     if @article.save
       # flash is built in ruby method
@@ -34,12 +35,10 @@ class ArticlesController < ActionController::Base
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
-    if @article.update(params.require(:article).permit(:title, :description))
+    if @article.update(article_params)
       flash[:notice] = "Article updated successfully"
       redirect_to @article
     else
@@ -50,10 +49,20 @@ class ArticlesController < ActionController::Base
   end
 
   def destroy
-    @article = Article.find(params[:id])
     if @article.destroy
       flash[:notice] = "deleted id #{params[:id]} entry "
       redirect_to articles_path
     end
+  end
+
+  private
+
+  # private method to get theparticular entry based on id
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :description)
   end
 end

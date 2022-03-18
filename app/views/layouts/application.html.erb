@@ -9,10 +9,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%# showing flash messages if entries are saved from articles_controller.rb > create method  %>
-    <% flash.each do |type, msg| %>
-      <%= msg %>
-    <% end %>
+    <%= render "layouts/messages"  %>
     <%= yield %>
   </body>
 </html>
