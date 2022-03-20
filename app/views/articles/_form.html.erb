@@ -1,7 +1,3 @@
-<%# ! showing flash messages  %>
-<% flash.each do |type, msg| %>
-  <%= msg %>
-<% end %>
 <%# ! showing error messages  %>
 <% if @article.errors.any?  %>
   <h2>Following Errors occoured</h2>
