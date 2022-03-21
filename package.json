@@ -1,0 +1,8 @@
+{
+  "name": "alpha-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pankaj485/alpha-blog.git",
+  "author": "pankcy <pankaj@cloudyuga.guru>",
+  "license": "MIT"
+}
