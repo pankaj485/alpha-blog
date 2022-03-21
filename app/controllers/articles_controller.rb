@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @users = User.all
   end
 
   def new
@@ -18,6 +19,9 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+
+    # adding user temporarily for dev purpose
+    @article.user = User.first
 
     if @article.save
       # flash is built in ruby method

@@ -7,6 +7,7 @@
         <div class="card text-center shadow mb-5 bg-white rounded">
           <div class="card-header font-italic">
             ID: <%= article.id  %>
+            user ID: <%= article.user.id   %>
           </div>
           <div class="card-body">
             <h5 class="card-title"> <strong>Title: </strong>  <%= link_to article.title, article_path(article), class: "text-success" %></h5>
