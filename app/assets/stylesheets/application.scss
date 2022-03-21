@@ -14,3 +14,52 @@
  *= require_self
  */
 @import "bootstrap";
+
+.navbar {
+	background-color: black !important;
+}
+
+.nav-link {
+	color: white !important;
+}
+
+#logo {
+	float: left;
+	font-size: 1.7em;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	font-weight: bold;
+}
+
+#home-container {
+	margin-top: 25px;
+}
+
+.jumbotron {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+		url("jumbo_bg.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+}
+
+html,
+body {
+	height: 100%;
+	background-color: lightgrey;
+}
+
+#page-content {
+	flex: 1 0 auto;
+}
+
+#sticky-footer {
+	flex-shrink: none;
+	background-color: red;
+}
+
+.last-card-margin:last-child {
+	margin-bottom: 6rem;
+}
