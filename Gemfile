@@ -81,3 +81,4 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'sass-rails'
 gem 'bootstrap', "~>4.4.1"
+gem 'will_paginate', '~> 3.3'
