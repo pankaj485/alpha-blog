@@ -21,8 +21,8 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    # adding user temporarily for dev purpose
-    @article.user = User.first
+    # using helper method defined in application_controller to get the current user
+    @article.user = current_user
 
     if @article.save
       # flash is built in ruby method

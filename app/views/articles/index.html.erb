@@ -1,5 +1,4 @@
 <h1 class="text-center mt-4">Listing all articles</h1>
-<h1 class="text-center mt-4"> <%= link_to "Create New Article", new_article_path, class: "btn btn-lg btn-info" %></h1>
 <div class="flickr_pagination">
   <%= will_paginate @articles, :container => false %>
 </div>

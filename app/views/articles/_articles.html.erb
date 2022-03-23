@@ -13,8 +13,11 @@
             <h5 class="card-title text-left"> <strong>Title: </strong>  <%= link_to article.title, article_path(article), class: "text-success" %></h5>
             <p class="card-text text-left "> <strong>Description: </strong>  <%= truncate(article.description, length: 100) %></p>
             <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
-            <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
-            <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <% ## only show edit and delete links if 1) the current user is logged 2) current article is realted to the logged in user   %>
+            <% if logged_in? && article.user == current_user  %>
+              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+              <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end  %>
           </div>
           <div class="card-footer text-muted">
             <small>Created <%= time_ago_in_words(article.created_at) %> ago, 
