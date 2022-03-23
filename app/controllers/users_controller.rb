@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_user, only: [:edit, :update]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -39,6 +39,16 @@ class UsersController < ApplicationController
       flash[:error] = "Couldn't register. Please try again."
       render "new"
     end
+  end
+
+  def destroy
+    # removing user from database
+    # @user is populated with set_user method
+    @user.destroy
+    # removing the session
+    session[:user_id] = nil
+    flash[:notice] = "Account and all associated articels deleted !"
+    redirect_to articles_path
   end
 
   private
