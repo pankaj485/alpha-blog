@@ -1,7 +1,12 @@
 class ArticlesController < ApplicationController
   # layout "application"
 
+  # getting user based on params and populating to respective actions
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  # if not logged in then only allow show and index actions
+  before_action :require_user, except: [:show, :index]
+  # if logged in which is based on requrire_user, verfies if the article author and logged in user are same
+  before_action :require_same_user, only: [:edit, :update, :destory]
 
   def show
     @entry_num = params[:id]
