@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   # if logged in user is not author of article then that user can't perform edit or destroy. hence redirects to view only
   def require_same_user
     # @article is populated through set_article method in articles_controlelr
-    if current_user != @article.user
+    if current_user != @article.user && !current_user.admin?
       flash[:alert] = "you can edit or destory your own articles only!! "
       redirect_to @article
     end

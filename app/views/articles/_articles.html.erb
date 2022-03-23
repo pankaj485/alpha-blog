@@ -14,7 +14,7 @@
             <p class="card-text text-left "> <strong>Description: </strong>  <%= truncate(article.description, length: 100) %></p>
             <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
             <% ## only show edit and delete links if 1) the current user is logged 2) current article is realted to the logged in user   %>
-            <% if logged_in? && article.user == current_user  %>
+            <% if logged_in? && (article.user == current_user || current_user.admin?)%>
               <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
               <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
             <% end  %>

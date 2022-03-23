@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article updated successfully"
       redirect_to @article
     else
-      flash[:notice] = "couldn't update "
+      flash[:alert] = "couldn't update "
       render "edit"
     end
     @data_received = params[:article]

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Your account information was successfully updated"
       redirect_to user_path(@user)
     else
-      flash[:error] = "Your account information was not updated"
+      flash[:alert] = "Your account information was not updated"
       render "edit"
     end
   end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to the Alpha Blog, #{@user.username} You have succesfully singed up"
       redirect_to articles_path
     else
-      flash[:error] = "Couldn't register. Please try again."
+      flash[:alert] = "Couldn't register. Please try again."
       render "new"
     end
   end
@@ -45,8 +45,8 @@ class UsersController < ApplicationController
     # removing user from database
     # @user is populated with set_user method
     @user.destroy
-    # removing the session
-    session[:user_id] = nil
+    # removing the session of actual user but not of admin
+    session[:user_id] = nil if current_user == @user
     flash[:notice] = "Account and all associated articels deleted !"
     redirect_to articles_path
   end
@@ -63,8 +63,8 @@ class UsersController < ApplicationController
 
   def require_same_user
     # @user is already populated through set_user method to the respective actions
-    if current_user != @user
-      flash[:alert] = "You can only edit your own account"
+    if (current_user != @user && !current_user.admin?)
+      flash[:alert] = "You can only edit or delete your own account"
       redirect_to @user
     end
   end
