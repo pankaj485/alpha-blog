@@ -10,10 +10,10 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(params.require(:category).permit(:name))
+    @category = Category.new(category_params)
     if @category.save
       flash[:notice] = " \"#{@category.name}\" Category was successfully created."
-      redirect_to articles_path
+      redirect_to @category
     else
       flash[:alert] = " \"#{@category.name}\" Category was not created."
       render "new"
