@@ -1,6 +1,15 @@
 require "test_helper"
 
 class CreateCategoryTest < ActionDispatch::IntegrationTest
+
+  # since we added restriction on Admin level, only index and show actions are globally possible.
+  # loggin in as an admin to perform rest of test cases.
+  setup do
+    @admin_user = User.create(username: "johndoe", email: "johndoe@example.com",
+                              password: "password", admin: true)
+    sign_in_as(@admin_user)
+  end
+
   test "get new category form and create category" do
     # get new categories path
     get "/categories/new"
@@ -19,8 +28,6 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
     # make sure to match the content is present after redirection
     assert_match "Sports", response.body
   end
-
-  require "test_helper"
 
   test "get new category form and reject invalid category submission" do
     # get new categories path
