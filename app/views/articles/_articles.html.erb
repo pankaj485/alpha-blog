@@ -8,6 +8,11 @@
               <p> Created by  <%= link_to article.user.username, user_path(article.user)  %>  </p>
               <p> Article ID: <%= article.id   %>, user ID: <%= article.user.id  %></p>
             <% end  %>
+            <%# showing categories %>
+            <% if article.categories.any? %>
+              <%# if any category is present then, it loops through it and renders through the partial which is expected as _categoy.html.erb %>
+              <div class="mt-2"><%= render article.categories %></div>
+            <% end %>
           </div>
           <div class="card-body">
             <h5 class="card-title text-left"> <strong>Title: </strong>  <%= link_to article.title, article_path(article), class: "text-success" %></h5>
