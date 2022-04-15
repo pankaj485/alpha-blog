@@ -31,6 +31,17 @@
           </div>
         </li>
       <% end  %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= "Category"   %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if  logged_in? && current_user.admin  %>
+            <%= link_to "Create category", new_category_path, class: "dropdown-item" %>
+          <% end  %>
+          <%= link_to "View categories", categories_path, class: "dropdown-item" %>
+        </div>
+      </li>
       <% if logged_in?  %>
         <li class="nav-item">
           <%= link_to "Log Out", logout_path, method: :delete, class:"nav-link"  %>

@@ -73,6 +73,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    #  category_ids is plural insted of category_id since it is many-to-many association
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 end
